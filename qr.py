@@ -43,6 +43,7 @@ def save():
 cap = cv2.VideoCapture(0)
 
 v = set()
+
 while True:
     ret, frame = cap.read()
     decoder(frame)
