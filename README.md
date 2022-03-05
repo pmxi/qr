@@ -1,5 +1,7 @@
 # qr scanner program for scouting app
-The the xlsx file to be modified should be `scouting.xlsx` in the directory of the python script
+
+## Installation
+install python at this link https://www.python.org/downloads/
 `pip install -r requirements.txt` to install dependencies or `pip3` or whatever you use on your system
 
 1. run `qr.py`
