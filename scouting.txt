@@ -1,0 +1,2 @@
+bob;254;Pit;HighLow;Traversal;>5;>5;12345;
+test2;34;Choose;test2;34;Pit;;No Climb;0;0;2;

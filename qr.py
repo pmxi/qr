@@ -52,3 +52,5 @@ while True:
         print("Saving! (O.o)\n         /||\\\n         / \\")
         save()
         v.clear()
+    elif code == ord("c"):
+        break
