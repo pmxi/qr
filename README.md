@@ -3,6 +3,7 @@
 ## Installation
 install python at this link https://www.python.org/downloads/
 
+## Usage
 to install dependencies to
 `pip install -r requirements.txt` to install dependencies or `pip3` or whatever you use on your system
 
