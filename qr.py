@@ -18,7 +18,7 @@ def decoder(image):
         v.add(barcodeData)
 
         barcodeType = obj.type
-        string = "Data " + str(barcodeData) + " | Type " + str(barcodeType)
+        string = str(barcodeData) + " | Type " + str(barcodeType)
 
         cv2.putText(
             frame, string, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2
