@@ -10,3 +10,4 @@ name;381;Match;;;;;;;;2;Yes;2;4;je;High;Low;s
 n;bb;Pit;No Drive;;No Climb;0;;No;j
 yh;bb;Pit;No Drive;;No Climb;0;;No;v
 hb;hb;Pit;Mecanum;High;Low;3;3;Yes;jhh
+name;number;Pit;Swerve;High;Low;2;1;Yes;com
