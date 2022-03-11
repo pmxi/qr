@@ -13,4 +13,5 @@ to install dependencies to
 4. press `q` when done scanning
 5. It will save your changes
 
-press `c` to close the program
+`c` to close the program
+`s` to print what has been scanned

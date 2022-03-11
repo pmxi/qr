@@ -51,6 +51,7 @@ while True:
         save(v)
         v.clear()
     elif code == ord("s"):
-        for i in v: print(i)
+        for i in v:
+            print(i)
     elif code == ord("c"):
         break
