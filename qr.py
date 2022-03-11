@@ -27,17 +27,14 @@ def decoder(image):
         # print(barcodeData)
 
 
-def save():
-    scoutingFile = open("scouting.txt", "a")
-
-    if len(v) != 0:
-        for i in v:
-            scoutingFile.write(i + "\n")
-        print("SAVED! ( ͡° ͜ʖ ͡°)\n")
-    else:
-        print("SAVED NOTHING! ¯\\_(ツ)_/¯\n")
-
-    scoutingFile.close()
+def save(values: set):
+    with open("scouting.txt", "a") as scouting_file:
+        if len(v) != 0:
+            for i in v:
+                scouting_file.write(i + "\n")
+            print("SAVED! ( ͡° ͜ʖ ͡°)\n")
+        else:
+            print("SAVED NOTHING! ¯\\_(ツ)_/¯\n")
 
 
 cap = cv2.VideoCapture(0)
@@ -51,7 +48,9 @@ while True:
     code = cv2.waitKey(10)
     if code == ord("q"):
         print("Saving! (O.o)\n         /||\\\n         / \\")
-        save()
+        save(v)
         v.clear()
+    elif code == ord("s"):
+        for i in v: print(i)
     elif code == ord("c"):
         break
