@@ -23,5 +23,7 @@ qr code scanner to text file
 
 options:
 `  -h, --help`            show this help message and exit
+
 `  -f FILE, --file FILE`  file to output qr code scans to, relative or absolute
+
  ` -v, --verbose`
