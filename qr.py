@@ -1,6 +1,11 @@
 import cv2
 import numpy as np
 from pyzbar.pyzbar import decode
+import argparse
+
+parser = argparse.ArgumentParser(description="qr code scanner to text file")
+parser.add_argument("-f", "--file", type=str,default="scouting.txt", help="file to output qr code scans to, relative or absolute")
+args = parser.parse_args()
 
 
 def decoder(image):
@@ -28,7 +33,7 @@ def decoder(image):
 
 
 def save(values: set):
-    with open("scouting.txt", "a") as scouting_file:
+    with open(args.file, "a") as scouting_file:
         if len(v) != 0:
             for i in v:
                 scouting_file.write(i + "\n")
