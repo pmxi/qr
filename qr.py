@@ -1,10 +1,13 @@
 import cv2
-import numpy as np
+# import numpy as np
+from numpy import array, int32
 from pyzbar.pyzbar import decode
 import argparse
 
 parser = argparse.ArgumentParser(description="qr code scanner to text file")
 parser.add_argument("-f", "--file", type=str,default="scouting.txt", help="file to output qr code scans to, relative or absolute")
+parser.add_argument("-v", "--verbose", action="store_true")
+
 args = parser.parse_args()
 
 
@@ -15,7 +18,8 @@ def decoder(image):
     for obj in barcode:
         points = obj.polygon
         (x, y, w, h) = obj.rect
-        pts = np.array(points, np.int32)
+        # pts = np.array(points, np.int32)
+        pts = array(points, int32)
         pts = pts.reshape((-1, 1, 2))
         cv2.polylines(image, [pts], True, (0, 255, 0), 3)
 
@@ -28,7 +32,8 @@ def decoder(image):
         cv2.putText(
             frame, string, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2
         )
-        # print("Barcode: "+barcodeData +" | Type: "+barcodeType)
+        if args.verbose:
+            print("Barcode: "+barcodeData +" | Type: "+barcodeType)
         # print(barcodeData)
 
 
@@ -49,7 +54,7 @@ v = set()
 while True:
     ret, frame = cap.read()
     decoder(frame)
-    cv2.imshow("Image", frame)
+    cv2.imshow("QR SCANNER", frame)
     code = cv2.waitKey(10)
     if code == ord("q"):
         print("Saving! (O.o)\n         /||\\\n         / \\")
