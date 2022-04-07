@@ -1,17 +1,18 @@
-import cv2
-# import numpy as np
-from numpy import array, int32
-from pyzbar.pyzbar import decode
 import argparse
 
 parser = argparse.ArgumentParser(description="qr code scanner to text file")
 parser.add_argument("-f", "--file", type=str,default="scouting.txt", help="file to output qr code scans to, relative or absolute")
 parser.add_argument("-v", "--verbose", action="store_true")
+parser.add_argument("-d", "--remove-duplicate", action="store_true")
 
 args = parser.parse_args()
 
 
 def decoder(image):
+    import cv2
+    # import numpy as np
+    from numpy import array, int32
+    from pyzbar.pyzbar import decode
     gray_img = cv2.cvtColor(image, 0)
     barcode = decode(gray_img)
 
@@ -47,21 +48,44 @@ def save(values: set):
             print("SAVED NOTHING! ¯\\_(ツ)_/¯\n")
 
 
-cap = cv2.VideoCapture(0)
 
-v = set()
 
-while True:
-    ret, frame = cap.read()
-    decoder(frame)
-    cv2.imshow("QR SCANNER", frame)
-    code = cv2.waitKey(10)
-    if code == ord("q"):
-        print("Saving! (O.o)\n         /||\\\n         / \\")
-        save(v)
-        v.clear()
-    elif code == ord("s"):
-        for i in v:
-            print(i)
-    elif code == ord("c"):
-        break
+if not args.remove_duplicate:
+    cap = cv2.VideoCapture(0)
+    v = set()
+    while True:
+        ret, frame = cap.read()
+        decoder(frame)
+        cv2.imshow("QR SCANNER", frame)
+        code = cv2.waitKey(10)
+        if code == ord("q"):
+            print("Saving! (O.o)\n         /||\\\n         / \\")
+            save(v)
+            v.clear()
+        elif code == ord("s"):
+            for i in v:
+                print(i)
+        elif code == ord("c"):
+            break
+
+elif args.remove_duplicate:
+#    with open(args.file, "r+") as scouting_file:
+#        values = []
+#        for line in scouting_file:
+#            if line in values:
+#                pass
+#            else:
+#                values.append(line)
+#        for value in values:
+#            scouting_file.write(value)
+    with open(args.file, "r+") as scouting_file:
+        values = set(scouting_file.readlines())
+        scouting_file.seek(0)
+        for v in values:
+            scouting_file.write(v)
+        scouting_file.truncate()
+
+
+            
+    print("duplicates removed from scouting file: {args.files}")
+
