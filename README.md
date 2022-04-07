@@ -15,3 +15,15 @@ to install dependencies to
 
 `c` to close the program
 `s` to print what has been scanned
+
+## Arguments
+usage: qr.py [-h] [-f FILE] [-v]
+
+qr code scanner to text file
+
+options:
+`  -h, --help`            show this help message and exit
+
+`  -f FILE, --file FILE`  file to output qr code scans to, relative or absolute
+
+ ` -v, --verbose`
